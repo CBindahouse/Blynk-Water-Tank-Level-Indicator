@@ -70,10 +70,33 @@
 #define VPIN_BUTTON_PERCENTAGE_GREATER_THAN   V15
 #define VPIN_BUTTON_RESET_ALL_ALERTS          V11 //Resets all alerts
 
+
 /***************************************************
- * 
+ *      Hardware Settings
+ **************************************************/
+
+#define PULSE_PIN D2  //gpio4
+
+
+/***************************************************
+ *        Variable Settings
+ **************************************************/
+
+#define FLOW_CALIBRATION 8.2 
+ 
+
+/***************************************************
+ *        Blynk Virtual Pin Assignment
+ **************************************************/
+
+#define VPIN_TOTAL_LITERS       V1
+#define VPIN_FLOW_RATE          V2
+#define VPIN_FLOW_MILLI_LITERS  V3
+#define VPIN_RESET              V4
+
+/***************************************************
  *        Server Settings
  **************************************************/
       
-#define OTA_HOSTNAME "Water Level Indicator"
+#define OTA_HOSTNAME "SE Water System"
  
