@@ -106,6 +106,16 @@ int waterComingOnOff;
 int resetAlertStatus;
 
 
+// For Flow Rate
+volatile long pulseCount = 0;
+float flowRate;
+unsigned int flowMilliLitres;
+unsigned long totalMilliLitres;
+float totalLitres;
+float totalLitresold;
+unsigned long oldTime;
+
+
 
 void MeasureCm() {
   //  The following trigPin/echoPin cycle is used to determine the
@@ -880,19 +890,12 @@ void resetAlerts() {
 }
 
 
-volatile long pulseCount = 0;
-float flowRate;
-unsigned int flowMilliLitres;
-unsigned long totalMilliLitres;
-float totalLitres;
-float totalLitresold;
-unsigned long oldTime;
-
-
 BLYNK_CONNECTED() { // runs once at device startup, once connected to server.
 
+  // For Flow Rate
   Blynk.syncVirtual(VPIN_TOTAL_LITERS); //gets last know value of V1 virtual pin
 
+  // For Water Tank Level Indicator
   Blynk.syncVirtual(VPIN_BUTTON_FEET_IS_LESS_THAN);
   Blynk.syncVirtual(VPIN_NUMERIC_FEET_IS_LESS_THAN);
   Blynk.syncVirtual(VPIN_BUTTON_RESET_ALL_ALERTS);
@@ -910,6 +913,7 @@ BLYNK_CONNECTED() { // runs once at device startup, once connected to server.
 
 }
 
+/* For Flow Rate, onwards*/
 
 // Restores last know value of V1 virtual pin which we got it from blynk server
 BLYNK_WRITE(VPIN_TOTAL_LITERS)
